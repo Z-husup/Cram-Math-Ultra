@@ -15,10 +15,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="ASCII\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\CramMathUltra.Application\CramMathUltra.Application.csproj" />
     </ItemGroup>
 

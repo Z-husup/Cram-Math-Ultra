@@ -1,16 +1,14 @@
 ﻿using CramMathUltra.Application.Abstractions;
 using CramMathUltra.Application.Generators;
 using CramMathUltra.Application.Sessions;
+using CramMathUltra.CLI.Rendering;
 using CramMathUltra.Domain.Entities;
 using CramMathUltra.Domain.Enums;
 using CramMathUltra.Presentation.Input;
 
-namespace CramMathUltra.Presentation.Factories;
-
 public class SessionEngineFactory : ISessionEngineFactory
 {
-    public ISessionEngine Create(
-        SessionConfiguration configuration)
+    public ISessionEngine Create(SessionConfiguration configuration)
     {
         ITaskGenerator generator =
             new RandomArithmeticGenerator(
@@ -20,13 +18,17 @@ public class SessionEngineFactory : ISessionEngineFactory
         IInputHandler inputHandler =
             new ConsoleRealtimeInputHandler();
 
+        ISessionRenderer renderer =
+            new ConsoleSessionRenderer();
+
         return configuration.Mode switch
         {
             TrainingModeType.Standard =>
                 new StandardArithmeticEngine(
                     generator,
                     configuration,
-                    inputHandler),
+                    inputHandler,
+                    renderer),
 
             _ => throw new NotImplementedException(
                 $"Mode {configuration.Mode} not implemented.")

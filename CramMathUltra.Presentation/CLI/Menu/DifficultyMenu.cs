@@ -1,36 +1,26 @@
-﻿namespace CramMathUltra.CLI.Menu;
+﻿using CramMathUltra.Presentation.CLI.Screens;
+
+namespace CramMathUltra.CLI.Menu;
 
 public static class DifficultyMenu
 {
     public static int Show()
     {
-        Console.Clear();
-
-        Console.WriteLine("=== Difficulty ===");
-        Console.WriteLine();
-
-        Console.WriteLine("1. Up to 10");
-        Console.WriteLine("2. Up to 100");
-        Console.WriteLine("3. Up to 1000");
-
-        Console.WriteLine();
-        Console.Write("Select: ");
-
-        while (true)
-        {
-            var key = Console.ReadKey(true);
-
-            switch (key.KeyChar)
+        int choice = MenuScreen.Show(
+            "SELECT DIFFICULTY",
+            new List<MenuOption>
             {
-                case '1':
-                    return 10;
+                new() { Key = 1, Title = "Up to 10" },
+                new() { Key = 2, Title = "Up to 100" },
+                new() { Key = 3, Title = "Up to 1000" }
+            });
 
-                case '2':
-                    return 100;
-
-                case '3':
-                    return 1000;
-            }
-        }
+        return choice switch
+        {
+            1 => 10,
+            2 => 100,
+            3 => 1000,
+            _ => 10
+        };
     }
 }

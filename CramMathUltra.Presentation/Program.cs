@@ -2,10 +2,13 @@
 using CramMathUltra.CLI.Menu;
 using CramMathUltra.CLI.Rendering;
 using CramMathUltra.Domain.Entities;
+using CramMathUltra.Presentation.CLI.Screens;
 using CramMathUltra.Presentation.Factories;
 
 ISessionEngineFactory engineFactory =
     new SessionEngineFactory();
+
+IntroScreen.Show();
 
 while (true)
 {

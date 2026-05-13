@@ -10,4 +10,7 @@ public class ArithmeticProblem
     }
 
     public int CorrectAnswer => Expression.Evaluate();
+
+    public int AnswerLength =>
+        CorrectAnswer.ToString().Length;
 }

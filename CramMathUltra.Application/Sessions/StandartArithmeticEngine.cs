@@ -1,52 +1,76 @@
 ﻿using CramMathUltra.Application.Abstractions;
+using CramMathUltra.Domain.Entities;
 
 namespace CramMathUltra.Application.Sessions;
 
 public class StandardArithmeticEngine : ISessionEngine
 {
     private readonly ITaskGenerator _generator;
+    private readonly SessionConfiguration _configuration;
+    private readonly IInputHandler _inputHandler;
 
-    public StandardArithmeticEngine(ITaskGenerator generator)
+    public StandardArithmeticEngine(
+        ITaskGenerator generator,
+        SessionConfiguration configuration,
+        IInputHandler inputHandler)
     {
         _generator = generator;
+        _configuration = configuration;
+        _inputHandler = inputHandler;
     }
 
-    public Task RunAsync()
+    public Task<TrainingResult> RunAsync()
     {
-        while (true)
+        var result = new TrainingResult();
+
+        for (int i = 0; i < _configuration.QuestionCount; i++)
         {
             Console.Clear();
 
             var problem = _generator.Generate();
 
-            Console.Write($"{problem.Expression} = ");
+            Console.WriteLine(
+                $"Question {i + 1}/{_configuration.QuestionCount}");
 
-            string? input = Console.ReadLine();
-
-            if (input?.ToLower() == "exit")
-                break;
-
-            if (!int.TryParse(input, out int answer))
+            while (true)
             {
-                Console.WriteLine("Invalid input.");
-                Console.ReadKey();
-                continue;
-            }
+                Console.SetCursorPosition(0, 2);
 
-            if (answer == problem.CorrectAnswer)
-            {
-                Console.WriteLine("Correct!");
-            }
-            else
-            {
-                Console.WriteLine(
-                    $"Wrong. Correct answer: {problem.CorrectAnswer}");
-            }
+                Console.Write(
+                    $"{problem.Expression} = ");
 
-            Console.WriteLine("Press any key...");
-            Console.ReadKey();
+                int answer =
+                    _inputHandler.ReadNumber(
+                        problem.AnswerLength);
+
+                result.TotalQuestions++;
+
+                if (answer == problem.CorrectAnswer)
+                {
+                    result.CorrectAnswers++;
+
+                    Console.WriteLine();
+                    Console.WriteLine("Correct!");
+
+                    Thread.Sleep(500);
+
+                    break;
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("Wrong!");
+
+                Thread.Sleep(500);
+
+                Console.SetCursorPosition(0, 2);
+
+                Console.Write(
+                    new string(' ', Console.WindowWidth));
+
+                Console.SetCursorPosition(0, 2);
+            }
         }
 
-        return Task.CompletedTask;
+        return Task.FromResult(result);
     }
 }

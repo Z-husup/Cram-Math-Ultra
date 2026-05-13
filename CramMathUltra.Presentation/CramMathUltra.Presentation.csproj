@@ -21,8 +21,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\CramMathUltra.Application\CramMathUltra.Application.csproj" />
-      <ProjectReference Include="..\CramMathUltra.Domain\CramMathUltra.Domain.csproj" />
-      <ProjectReference Include="..\CramMathUltra.Infrastructure\CramMathUltra.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,6 +1,11 @@
 ﻿namespace CramMathUltra.Domain.Enums;
 
-public class TrainingModeType
+public enum TrainingModeType
 {
-    
+    Standard,
+    Flash,
+    WhichOperation,
+    ChainMemory,
+    TableFill,
+    Typing
 }

@@ -1,6 +1,8 @@
-﻿namespace CramMathUltra.Application.Abstractions;
+﻿using CramMathUltra.Domain.Entities;
+
+namespace CramMathUltra.Application.Abstractions;
 
 public interface ISessionEngine
 {
-    Task RunAsync();
+    Task<TrainingResult> RunAsync();
 }

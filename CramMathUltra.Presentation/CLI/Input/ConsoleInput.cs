@@ -1,6 +1,6 @@
 ﻿namespace CramMathUltra.CLI.Input;
 
-public class ConsoleInput
+public static class ConsoleInput
 {
     
 }

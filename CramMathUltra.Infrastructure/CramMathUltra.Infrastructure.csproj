@@ -7,15 +7,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CramMathUltra.Application\CramMathUltra.Application.csproj" />
-      <ProjectReference Include="..\CramMathUltra.Domain\CramMathUltra.Domain.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Folder Include="Generation\" />
       <Folder Include="Persistence\" />
       <Folder Include="Timing\" />
       <Folder Include="Typing\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CramMathUltra.Application\CramMathUltra.Application.csproj" />
     </ItemGroup>
 
 </Project>

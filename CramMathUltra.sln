@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CramMathUltra.Presentation", "CramMathUltra.Presentation\CramMathUltra.Presentation.csproj", "{951908E2-2D54-4629-90E9-99861054B1C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CramMathUltra.Domain", "CramMathUltra.Domain\CramMathUltra.Domain.csproj", "{CF90FEC7-E829-4BAC-98B3-C41A7DB81353}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CramMathUltra.Application", "CramMathUltra.Application\CramMathUltra.Application.csproj", "{23B62F6C-7454-4C87-8B2E-D0BE41A57D31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CramMathUltra.Infrastructure", "CramMathUltra.Infrastructure\CramMathUltra.Infrastructure.csproj", "{2347C227-7EB1-49D7-BB0D-08AB254EA441}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{951908E2-2D54-4629-90E9-99861054B1C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{951908E2-2D54-4629-90E9-99861054B1C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{951908E2-2D54-4629-90E9-99861054B1C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{951908E2-2D54-4629-90E9-99861054B1C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF90FEC7-E829-4BAC-98B3-C41A7DB81353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF90FEC7-E829-4BAC-98B3-C41A7DB81353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF90FEC7-E829-4BAC-98B3-C41A7DB81353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF90FEC7-E829-4BAC-98B3-C41A7DB81353}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23B62F6C-7454-4C87-8B2E-D0BE41A57D31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23B62F6C-7454-4C87-8B2E-D0BE41A57D31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23B62F6C-7454-4C87-8B2E-D0BE41A57D31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23B62F6C-7454-4C87-8B2E-D0BE41A57D31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2347C227-7EB1-49D7-BB0D-08AB254EA441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2347C227-7EB1-49D7-BB0D-08AB254EA441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2347C227-7EB1-49D7-BB0D-08AB254EA441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2347C227-7EB1-49D7-BB0D-08AB254EA441}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

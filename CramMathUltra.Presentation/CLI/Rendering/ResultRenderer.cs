@@ -1,6 +1,6 @@
 ﻿using CramMathUltra.Domain.Entities;
 
-namespace CramMathUltra.CLI.Rendering;
+namespace CramMathUltra.Presentation.CLI.Rendering;
 
 public static class ResultRenderer
 {

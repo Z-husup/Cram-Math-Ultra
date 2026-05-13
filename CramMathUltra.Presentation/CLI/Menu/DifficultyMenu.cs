@@ -1,6 +1,6 @@
 ﻿using CramMathUltra.Presentation.CLI.Screens;
 
-namespace CramMathUltra.CLI.Menu;
+namespace CramMathUltra.Presentation.CLI.Menu;
 
 public static class DifficultyMenu
 {

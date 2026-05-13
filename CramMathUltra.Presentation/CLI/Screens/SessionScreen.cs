@@ -1,6 +1,6 @@
-﻿using CramMathUltra.ASCII;
+﻿using CramMathUltra.Presentation.ASCII;
 
-namespace CramMathUltra.CLI.Screens;
+namespace CramMathUltra.Presentation.CLI.Screens;
 
 public static class SessionScreen
 {

@@ -1,7 +1,7 @@
 ﻿using CramMathUltra.Application.Abstractions;
-using CramMathUltra.CLI.Menu;
-using CramMathUltra.CLI.Rendering;
 using CramMathUltra.Domain.Entities;
+using CramMathUltra.Presentation.CLI.Menu;
+using CramMathUltra.Presentation.CLI.Rendering;
 using CramMathUltra.Presentation.CLI.Screens;
 using CramMathUltra.Presentation.Factories;
 

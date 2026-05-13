@@ -1,4 +1,4 @@
-﻿namespace CramMathUltra.CLI.Menu;
+﻿namespace CramMathUltra.Presentation.CLI.Menu;
 
 public class MenuOption
 {

@@ -1,7 +1,7 @@
 ﻿using CramMathUltra.Application.Abstractions;
-using CramMathUltra.CLI.Screens;
+using CramMathUltra.Presentation.CLI.Screens;
 
-namespace CramMathUltra.CLI.Rendering;
+namespace CramMathUltra.Presentation.CLI.Rendering;
 
 public class ConsoleSessionRenderer : ISessionRenderer
 {

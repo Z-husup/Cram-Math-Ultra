@@ -1,5 +1,5 @@
-﻿using CramMathUltra.ASCII;
-using CramMathUltra.CLI.Menu;
+﻿using CramMathUltra.Presentation.ASCII;
+using CramMathUltra.Presentation.CLI.Menu;
 
 namespace CramMathUltra.Presentation.CLI.Screens;
 

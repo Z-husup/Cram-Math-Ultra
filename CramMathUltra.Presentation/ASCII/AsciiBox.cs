@@ -1,4 +1,4 @@
-﻿namespace CramMathUltra.ASCII;
+﻿namespace CramMathUltra.Presentation.ASCII;
 
 public static class AsciiBox
 {

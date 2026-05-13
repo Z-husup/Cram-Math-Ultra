@@ -1,10 +1,12 @@
 ﻿using CramMathUltra.Application.Abstractions;
 using CramMathUltra.Application.Generators;
 using CramMathUltra.Application.Sessions;
-using CramMathUltra.CLI.Rendering;
 using CramMathUltra.Domain.Entities;
 using CramMathUltra.Domain.Enums;
-using CramMathUltra.Presentation.Input;
+using CramMathUltra.Presentation.CLI.Input;
+using CramMathUltra.Presentation.CLI.Rendering;
+
+namespace CramMathUltra.Presentation.Factories;
 
 public class SessionEngineFactory : ISessionEngineFactory
 {

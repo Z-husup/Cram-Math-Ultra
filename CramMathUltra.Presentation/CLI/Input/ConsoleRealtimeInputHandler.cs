@@ -1,6 +1,6 @@
 ﻿using CramMathUltra.Application.Abstractions;
 
-namespace CramMathUltra.Presentation.Input;
+namespace CramMathUltra.Presentation.CLI.Input;
 
 public class ConsoleRealtimeInputHandler : IInputHandler
 {

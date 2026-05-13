@@ -18,4 +18,10 @@
       <ProjectReference Include="..\CramMathUltra.Application\CramMathUltra.Application.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <Content Include="Assets\ASCII\**\*">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
 </Project>

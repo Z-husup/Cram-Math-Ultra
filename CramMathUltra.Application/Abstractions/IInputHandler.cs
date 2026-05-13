@@ -1,6 +1,6 @@
 ﻿namespace CramMathUltra.Application.Abstractions;
 
-public interface IInputHandler
+public class IInputHandler
 {
-    int ReadNumber(int expectedLength);
+    
 }

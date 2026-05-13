@@ -1,6 +1,6 @@
 ﻿namespace CramMathUltra.Application.Abstractions;
 
-public class ITaskGenerator
+public class ISessionService
 {
     
 }

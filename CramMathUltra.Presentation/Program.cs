@@ -1,36 +1,43 @@
-﻿using CramMathUltra.Application.Abstractions;
-using CramMathUltra.Domain.Entities;
-using CramMathUltra.Presentation.CLI.Menu;
-using CramMathUltra.Presentation.CLI.Rendering;
-using CramMathUltra.Presentation.CLI.Screens;
-using CramMathUltra.Presentation.Factories;
+﻿using CramMathUltra.Application.Factories;
+using CramMathUltra.Application.Sessions;
+using CramMathUltra.Presentation.Core;
+using CramMathUltra.Presentation.Screens;
+using CramMathUltra.Presentation.Screens.Modes;
 
-ISessionEngineFactory engineFactory =
-    new SessionEngineFactory();
-
-IntroScreen.Show();
-
-while (true)
+internal class Program
 {
-    int operationChoice = MainMenu.Show();
+    static void Main(string[] args)
+    {
+        ConsoleSetup.Init();
 
-    if (operationChoice == 0)
-        break;
+        var intro = new IntroScreen();
 
-    int modeChoice = ModeMenu.Show();
+        intro.Play();
 
-    int maxValue = DifficultyMenu.Show();
+        var engineFactory = new EngineFactory();
+        var menu = new MenuScreen();
 
-    SessionConfiguration configuration =
-        SessionConfigurationFactory.Create(
-            operationChoice,
-            modeChoice,
-            maxValue);
+        while (true)
+        {
+            var action = menu.Show();
 
-    ISessionEngine engine =
-        engineFactory.Create(configuration);
+            if (action == MenuAction.Exit)
+                break;
 
-    var result = await engine.RunAsync();
+            try
+            {
+                var engine = engineFactory.Create();
 
-    ResultRenderer.Render(result);
+                var controller = new SessionController(engine);
+
+                var ui = new SessionUI(controller);
+
+                ui.Run();
+            }
+            catch (OperationCanceledException)
+            {
+                continue;
+            }
+        }
+    }
 }

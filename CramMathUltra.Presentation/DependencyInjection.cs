@@ -1,6 +1,6 @@
 ﻿namespace CramMathUltra;
 
-public class ConsoleMenu
+public class DependencyInjection
 {
     
 }

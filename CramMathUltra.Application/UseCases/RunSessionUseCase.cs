@@ -1,6 +1,6 @@
 ﻿namespace CramMathUltra.Application.UseCases;
 
-public class FinishSessionUseCase
+public class RunSessionUseCase
 {
     
 }

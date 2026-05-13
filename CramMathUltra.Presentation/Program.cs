@@ -1,33 +1,44 @@
 ﻿using CramMathUltra.Application.Abstractions;
 using CramMathUltra.Application.Generators;
 using CramMathUltra.Application.Sessions;
+using CramMathUltra.CLI.Menu;
 using CramMathUltra.CLI.Rendering;
 using CramMathUltra.Domain.Entities;
-using CramMathUltra.Domain.Enums;
+using CramMathUltra.Factories;
 using CramMathUltra.Presentation.Input;
 
-var configuration = new SessionConfiguration
+while (true)
 {
-    Operation = OperationType.Addition,
-    Mode = TrainingModeType.Standard,
-    MaxValue = 10,
-    QuestionCount = 5
-};
+    int operationChoice = MainMenu.Show();
 
-ITaskGenerator generator =
-    new RandomArithmeticGenerator(
-        configuration.MaxValue,
-        configuration.Operation);
+    if (operationChoice == 0)
+        break;
 
-IInputHandler inputHandler =
-    new ConsoleRealtimeInputHandler();
+    int modeChoice = ModeMenu.Show();
 
-ISessionEngine engine =
-    new StandardArithmeticEngine(
-        generator,
-        configuration,
-        inputHandler);
+    int maxValue = DifficultyMenu.Show();
 
-var result = await engine.RunAsync();
+    SessionConfiguration configuration =
+        SessionConfigurationFactory.Create(
+            operationChoice,
+            modeChoice,
+            maxValue);
 
-ResultRenderer.Render(result);
+    ITaskGenerator generator =
+        new RandomArithmeticGenerator(
+            configuration.MaxValue,
+            configuration.Operation);
+
+    IInputHandler inputHandler =
+        new ConsoleRealtimeInputHandler();
+
+    ISessionEngine engine =
+        new StandardArithmeticEngine(
+            generator,
+            configuration,
+            inputHandler);
+
+    var result = await engine.RunAsync();
+
+    ResultRenderer.Render(result);
+}

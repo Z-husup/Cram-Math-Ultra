@@ -1,7 +1,7 @@
 ﻿using CramMathUltra.Domain.Entities;
 using CramMathUltra.Domain.Enums;
 
-namespace CramMathUltra.Factories;
+namespace CramMathUltra.Presentation.Factories;
 
 public static class SessionConfigurationFactory
 {

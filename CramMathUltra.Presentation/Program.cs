@@ -1,11 +1,11 @@
 ﻿using CramMathUltra.Application.Abstractions;
-using CramMathUltra.Application.Generators;
-using CramMathUltra.Application.Sessions;
 using CramMathUltra.CLI.Menu;
 using CramMathUltra.CLI.Rendering;
 using CramMathUltra.Domain.Entities;
-using CramMathUltra.Factories;
-using CramMathUltra.Presentation.Input;
+using CramMathUltra.Presentation.Factories;
+
+ISessionEngineFactory engineFactory =
+    new SessionEngineFactory();
 
 while (true)
 {
@@ -24,19 +24,8 @@ while (true)
             modeChoice,
             maxValue);
 
-    ITaskGenerator generator =
-        new RandomArithmeticGenerator(
-            configuration.MaxValue,
-            configuration.Operation);
-
-    IInputHandler inputHandler =
-        new ConsoleRealtimeInputHandler();
-
     ISessionEngine engine =
-        new StandardArithmeticEngine(
-            generator,
-            configuration,
-            inputHandler);
+        engineFactory.Create(configuration);
 
     var result = await engine.RunAsync();
 

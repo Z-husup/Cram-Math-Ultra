@@ -3,6 +3,7 @@
 public interface ISessionRenderer
 {
     void ShowQuestion(string expression, int index, int total);
+    void ShowInputPrompt(string text);
     void ShowCorrect();
-    void ShowWrong(int correctAnswer);
+    void ShowWrong(string info);
 }

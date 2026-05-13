@@ -1,5 +1,6 @@
 ﻿using CramMathUltra.Presentation.ASCII;
 using CramMathUltra.Presentation.CLI.Menu;
+using CramMathUltra.Presentation.CLI.Rendering;
 
 namespace CramMathUltra.Presentation.CLI.Screens;
 
@@ -17,7 +18,7 @@ public static class MenuScreen
         }
 
         Console.WriteLine();
-        Console.Write("Select: ");
+        Console.Write(ConsoleLayout.CenterLine("Select: ", ConsoleLayout.GetWidth()));
 
         while (true)
         {

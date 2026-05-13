@@ -6,24 +6,39 @@ public class ConsoleRealtimeInputHandler : IInputHandler
 {
     public int ReadNumber(int expectedLength)
     {
+        string input = "";
+
         while (true)
         {
-            string current = "";
+            var key = Console.ReadKey(true);
 
-            while (current.Length < expectedLength)
+            // BACKSPACE support
+            if (key.Key == ConsoleKey.Backspace)
             {
-                var key = Console.ReadKey(true);
+                if (input.Length > 0)
+                {
+                    input = input[..^1];
 
-                if (!char.IsDigit(key.KeyChar))
-                    continue;
+                    // remove last char visually
+                    Console.Write("\b \b");
+                }
 
-                current += key.KeyChar;
-
-                Console.Write(key.KeyChar);
+                continue;
             }
 
-            if (int.TryParse(current, out int result))
-                return result;
+            // accept only digits
+            if (!char.IsDigit(key.KeyChar))
+                continue;
+
+            input += key.KeyChar;
+            Console.Write(key.KeyChar);
+
+            // auto-submit when full
+            if (input.Length == expectedLength)
+            {
+                Console.WriteLine();
+                return int.Parse(input);
+            }
         }
     }
 }

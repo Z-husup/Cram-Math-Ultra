@@ -1,13 +1,18 @@
-﻿namespace CramMathUltra.Presentation.ASCII;
+﻿using CramMathUltra.Presentation.CLI.Rendering;
+
+namespace CramMathUltra.Presentation.ASCII;
 
 public static class AsciiHeader
 {
     public static void Draw(string text)
     {
         Console.WriteLine();
-        Console.WriteLine("====================================");
-        Console.WriteLine($"   {text}");
-        Console.WriteLine("====================================");
+        ConsoleLayout.WriteCenteredLines(new[]
+        {
+            "====================================",
+            $"   {text}",
+            "===================================="
+        });
         Console.WriteLine();
     }
 }

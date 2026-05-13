@@ -24,8 +24,6 @@ public class StandardArithmeticEngine : ISessionEngine
     
     public Task<TrainingResult> RunAsync()
     {
-        var result = new TrainingResult();
-
         for (int i = 0; i < _configuration.QuestionCount; i++)
         {
             var problem = _generator.Generate();
@@ -35,25 +33,24 @@ public class StandardArithmeticEngine : ISessionEngine
                 i + 1,
                 _configuration.QuestionCount);
 
+            _renderer.ShowInputPrompt(
+                $"{problem.Expression} = ");
+
             while (true)
             {
                 int answer =
-                    _inputHandler.ReadNumber(
-                        problem.AnswerLength);
-
-                result.TotalQuestions++;
+                    _inputHandler.ReadNumber(problem.AnswerLength);
 
                 if (answer == problem.CorrectAnswer)
                 {
-                    result.CorrectAnswers++;
                     _renderer.ShowCorrect();
                     break;
                 }
 
-                _renderer.ShowWrong(problem.CorrectAnswer);
+                _renderer.ShowWrong("Try again");
             }
         }
 
-        return Task.FromResult(result);
+        return Task.FromResult(new TrainingResult());
     }
 }

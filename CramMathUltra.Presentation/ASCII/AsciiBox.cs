@@ -1,17 +1,19 @@
-﻿namespace CramMathUltra.Presentation.ASCII;
+﻿using CramMathUltra.Presentation.CLI.Rendering;
+
+namespace CramMathUltra.Presentation.ASCII;
 
 public static class AsciiBox
 {
     public static void Draw(string title, string content)
     {
-        int width = Math.Max(title.Length, content.Length) + 6;
+        int width = ConsoleLayout.GetWidth();
 
-        string border = "+" + new string('-', width) + "+";
+        string border = "+" + new string('-', Math.Min(width - 2, 40)) + "+";
 
-        Console.WriteLine(border);
-        Console.WriteLine($"|  {title.PadRight(width - 2)}|");
-        Console.WriteLine(border);
-        Console.WriteLine($"|  {content.PadRight(width - 2)}|");
-        Console.WriteLine(border);
+        Console.WriteLine(ConsoleLayout.CenterLine(border, width));
+        Console.WriteLine(ConsoleLayout.CenterLine($"| {title} |", width));
+        Console.WriteLine(ConsoleLayout.CenterLine(border, width));
+        Console.WriteLine(ConsoleLayout.CenterLine($"| {content} |", width));
+        Console.WriteLine(ConsoleLayout.CenterLine(border, width));
     }
 }

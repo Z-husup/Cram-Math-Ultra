@@ -13,10 +13,6 @@
 
 ---
 
-### 3D Math Ultra
-
-![Gameplay Screenshot](screenshots/3dMathUltra.png)
-
 Cram Math Ultra is a fan-made console pretraining tool for 3D Math Ultra, designed to help players improve their math speed and accuracy before jumping into the main game.
 
 The project focuses on:
@@ -24,6 +20,12 @@ The project focuses on:
 - Difficulty progression
 - Console-based gameplay
 - Lightweight training sessions
+
+### 3D Math Ultra
+
+![Gameplay Screenshot](screenshots/3dMathUltra.png)
+
+Link to 3D MATH ULTRA: https://store.steampowered.com/app/1309200/3D_Math__Ultra/
 
 ---
 
@@ -67,5 +69,3 @@ dotnet run
 ## Disclaimer
 
 Cram Math Ultra is a fan project and is not affiliated with the creators of 3D Math Ultra.
-
-Link to 3D MATH ULTRA: https://store.steampowered.com/app/1309200/3D_Math__Ultra/

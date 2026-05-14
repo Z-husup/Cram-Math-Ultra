@@ -1,9 +1,5 @@
 # Cram Math Ultra
 
-## Screenshots
-
-### Main Menu
-
 ![Main Menu Screenshot](screenshots/main-menu.png)
 
 ---

@@ -2,13 +2,15 @@
 using CramMathUltra.Application.Sessions;
 using CramMathUltra.Presentation.Core;
 using CramMathUltra.Presentation.Screens;
-using CramMathUltra.Presentation.Screens.Modes;
 
 internal class Program
 {
     static void Main(string[] args)
     {
         ConsoleSetup.Init();
+        
+        // AudioManager.PlayLoop(
+        //     "Assets/Audio/Soundtrack.wav");
 
         var intro = new IntroScreen();
 

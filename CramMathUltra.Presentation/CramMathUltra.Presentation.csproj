@@ -24,4 +24,15 @@
         </Content>
     </ItemGroup>
 
+    <ItemGroup>
+        <Reference Include="System.Windows.Extensions" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="NAudio" Version="2.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Assets\Audio\" />
+    </ItemGroup>
 </Project>

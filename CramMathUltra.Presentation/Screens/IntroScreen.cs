@@ -13,7 +13,11 @@ public class IntroScreen
             AsciiImage.LoadIntro("Assets/ASCII/intro/frame1.txt"),
             AsciiImage.LoadIntro("Assets/ASCII/intro/frame2.txt"),
             AsciiImage.LoadIntro("Assets/ASCII/intro/frame3.txt"),
-            AsciiImage.LoadIntro("Assets/ASCII/intro/frame4.txt")
+            AsciiImage.LoadIntro("Assets/ASCII/intro/frame4.txt"),
+            AsciiImage.LoadIntro("Assets/ASCII/intro/frame5.txt"),
+            AsciiImage.LoadIntro("Assets/ASCII/intro/frame6.txt"),
+            AsciiImage.LoadIntro("Assets/ASCII/intro/frame4.txt"),
+            AsciiImage.LoadIntro("Assets/ASCII/intro/frame5.txt")
         ];
     }
 
@@ -27,7 +31,7 @@ public class IntroScreen
 
             Console.Write(frame);
 
-            Thread.Sleep(1200);
+            Thread.Sleep(444);
         }
 
         Console.Clear();

@@ -13,10 +13,30 @@ public class MenuScreen
     {
         _center =
             @"
-CRAM MATH ULTRA
+Use number keys on keyboard:
 
 1. Start Session
 2. Exit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cram Math Ultra - is a fan-made 
+console pretraining for 
+3D Math Ultra, designed to 
+help players build the math 
+skills needed to start the 
+game with ease.
 ";
     }
 

@@ -34,7 +34,7 @@ internal class Program
                 var config = SessionConfigurationFactory.Create();
 
                 var engine = engineFactory.Create(config);
-                var controller = new SessionController(engine);
+                var controller = new SessionController(engine, config);
                 var ui = new SessionUI(controller);
 
                 ui.Run();

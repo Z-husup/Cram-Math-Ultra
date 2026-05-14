@@ -19,6 +19,7 @@ SELECT MODE
 
 1. Standard Arithmetic
 2. Table Fill
+3. Typing Practice
 
 ESC - back
 ";
@@ -33,6 +34,7 @@ ESC - back
 
             if (key.Key == ConsoleKey.D1) return TrainingModeType.Standard;
             if (key.Key == ConsoleKey.D2) return TrainingModeType.TableFill;
+            if (key.Key == ConsoleKey.D3) return TrainingModeType.TypingPractice;
             if (key.Key == ConsoleKey.Escape) throw new OperationCanceledException();
         }
     }

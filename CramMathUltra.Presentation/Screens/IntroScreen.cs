@@ -15,9 +15,7 @@ public class IntroScreen
             AsciiImage.LoadIntro("Assets/ASCII/intro/frame3.txt"),
             AsciiImage.LoadIntro("Assets/ASCII/intro/frame4.txt"),
             AsciiImage.LoadIntro("Assets/ASCII/intro/frame5.txt"),
-            AsciiImage.LoadIntro("Assets/ASCII/intro/frame6.txt"),
-            AsciiImage.LoadIntro("Assets/ASCII/intro/frame4.txt"),
-            AsciiImage.LoadIntro("Assets/ASCII/intro/frame5.txt")
+            AsciiImage.LoadIntro("Assets/ASCII/intro/frame6.txt")
         ];
     }
 

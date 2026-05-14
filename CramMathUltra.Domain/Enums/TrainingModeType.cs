@@ -7,5 +7,5 @@ public enum TrainingModeType
     WhichOperation,
     ChainMemory,
     TableFill,
-    Typing
+    TypingPractice
 }

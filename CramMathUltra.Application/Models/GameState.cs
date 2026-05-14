@@ -20,7 +20,7 @@ public class GameState
 
     public TrainingModeType Mode { get; set; }
 
-    // TABLE FILL
+    // TABLE FILL MODE
     public int Row { get; set; }
     public int Col { get; set; }
 
@@ -29,4 +29,11 @@ public class GameState
     public int[,] TableProgress { get; set; } = new int[10, 10];
 
     public bool[,] TableSolved { get; set; } = new bool[10, 10];
+    
+    // TYPING MODE
+    public string TypingTarget { get; set; } = "";
+
+    public int Keystrokes { get; set; }
+
+    public int Mistakes { get; set; }
 }

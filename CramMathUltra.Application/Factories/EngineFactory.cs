@@ -11,9 +11,10 @@ public class EngineFactory
     {
         return config.Mode switch
         {
-            TrainingModeType.Standard => new SessionEngine(),
+            TrainingModeType.Standard => new SessionEngine(config.Difficulty),
             TrainingModeType.TableFill => new TableFillEngine(),
-            _ => new SessionEngine()
+            TrainingModeType.TypingPractice => new TypingPracticeEngine(config.Difficulty),
+            _ => new SessionEngine(config.Difficulty)
         };
     }
 }

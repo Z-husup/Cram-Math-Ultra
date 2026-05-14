@@ -1,8 +1,8 @@
 ﻿namespace CramMathUltra.Presentation.Input;
 
-public class SessionInput
+public class ConsoleInputHandler
 {
-    public string Read()
+    public string ReadNumber(int expectedLength)
     {
         string input = "";
 
@@ -29,7 +29,7 @@ public class SessionInput
             input += key.KeyChar;
             Console.Write(key.KeyChar);
 
-            if (input.Length >= 1)
+            if (input.Length >= expectedLength)
             {
                 Console.WriteLine();
                 return input;

@@ -4,6 +4,8 @@ using CramMathUltra.Domain.Enums;
 using CramMathUltra.Presentation.Audio;
 using CramMathUltra.Presentation.Core;
 using CramMathUltra.Presentation.Factories;
+using CramMathUltra.Presentation.Input;
+using CramMathUltra.Presentation.Screens.Modes;
 
 namespace CramMathUltra.Presentation.Screens;
 
@@ -11,6 +13,10 @@ public class SessionUI
 {
     private readonly Layout3Column _layout = new();
     private readonly SessionController _controller;
+
+    private readonly ConsoleInputHandler _input = new();
+    private readonly TableRenderer _table = new();
+    private readonly TypingRenderer _typing = new();
 
     public SessionUI(SessionController controller)
     {
@@ -21,6 +27,8 @@ public class SessionUI
     {
         var state = _controller.Start();
 
+        new ModeIntroScreen().Show(state.Mode);
+
         while (true)
         {
             Console.Clear();
@@ -30,9 +38,9 @@ public class SessionUI
             if (state.IsFinished)
                 break;
 
-            MoveToInput();
+            Console.SetCursorPosition(60, 24);
 
-            var input = ReadInput(state.ExpectedAnswerLength);
+            var input = _input.ReadNumber(state.ExpectedAnswerLength);
 
             state = _controller.Step(input);
         }
@@ -45,6 +53,9 @@ public class SessionUI
             state.IsWrong ? UiState.Wrong :
             UiState.Neutral;
 
+        if (state.IsCorrect) SoundEffects.Correct();
+        if (state.IsWrong) SoundEffects.Wrong();
+
         _layout.Render(
             AsciiFactory.Left(ui),
             BuildCenter(state),
@@ -56,7 +67,8 @@ public class SessionUI
     {
         return state.Mode switch
         {
-            TrainingModeType.TableFill => BuildTable(state),
+            TrainingModeType.TableFill => _table.Render(state),
+            TrainingModeType.TypingPractice => _typing.Render(state),
             _ => BuildStandard(state)
         };
     }
@@ -73,88 +85,5 @@ Wrong:   {state.Wrong}
 
 Answer:
 ";
-    }
-
-    private string BuildTable(GameState state)
-    {
-        int size = state.TableSize;
-
-        var lines = new List<string>();
-
-        for (int r = 0; r < size; r++)
-        {
-            var row = "";
-
-            for (int c = 0; c < size; c++)
-            {
-                var value = (r + 1) * (c + 1);
-
-                string cell;
-
-                if (state.TableSolved[r, c])
-                    cell = value.ToString().PadLeft(3);
-                else if (r == state.Row && c == state.Col)
-                    cell = " ? ".PadLeft(3);
-                else
-                    cell = " . ".PadLeft(3);
-
-                row += cell + " ";
-            }
-
-            lines.Add(row);
-        }
-
-        return $@"
-TABLE FILL ({size}x{size})
-
-{state.CurrentQuestion}
-
-{string.Join("\n", lines)}
-
-Correct: {state.Correct}
-Wrong:   {state.Wrong}
-
-Answer:
-";
-    }
-
-    private void MoveToInput()
-    {
-        Console.SetCursorPosition(60, 24);
-    }
-
-    private string ReadInput(int expectedLength)
-    {
-        string input = "";
-
-        while (true)
-        {
-            var key = Console.ReadKey(true);
-
-            if (key.Key == ConsoleKey.Escape)
-                throw new OperationCanceledException();
-
-            if (key.Key == ConsoleKey.Backspace)
-            {
-                if (input.Length > 0)
-                {
-                    input = input[..^1];
-                    Console.Write("\b \b");
-                }
-                continue;
-            }
-
-            if (!char.IsDigit(key.KeyChar))
-                continue;
-
-            input += key.KeyChar;
-            Console.Write(key.KeyChar);
-
-            if (input.Length >= expectedLength)
-            {
-                Console.WriteLine();
-                return input;
-            }
-        }
     }
 }

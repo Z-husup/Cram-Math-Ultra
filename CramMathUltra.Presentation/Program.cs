@@ -1,7 +1,9 @@
 ﻿using CramMathUltra.Application.Factories;
 using CramMathUltra.Application.Sessions;
+using CramMathUltra.Presentation.Audio;
 using CramMathUltra.Presentation.Core;
 using CramMathUltra.Presentation.Screens;
+using CramMathUltra.Presentation.Soundtracks;
 
 internal class Program
 {
@@ -9,8 +11,8 @@ internal class Program
     {
         ConsoleSetup.Init();
         
-        // AudioManager.PlayLoop(
-        //     "Assets/Audio/Soundtrack.wav");
+        SoundtrackPlayer.Play(
+            IntroSoundtrack.Create());
 
         var intro = new IntroScreen();
 

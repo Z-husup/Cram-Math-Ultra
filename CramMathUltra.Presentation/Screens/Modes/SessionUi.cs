@@ -1,4 +1,5 @@
 ﻿using CramMathUltra.Application.Sessions;
+using CramMathUltra.Presentation.Audio;
 using CramMathUltra.Presentation.Core;
 using CramMathUltra.Presentation.Factories;
 
@@ -38,6 +39,18 @@ public class SessionUI
 
     private void Render(CramMathUltra.Application.Models.GameState state)
     {
+        // SessionUI.cs
+
+        if (state.IsCorrect)
+        {
+            SoundEffects.Correct();
+        }
+        
+        if (state.IsWrong)
+        {
+            SoundEffects.Wrong();
+        }
+        
         var ui =
             state.IsCorrect ? UiState.Correct :
             state.IsWrong ? UiState.Wrong :

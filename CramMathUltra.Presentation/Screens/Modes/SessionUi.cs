@@ -1,4 +1,6 @@
-﻿using CramMathUltra.Application.Sessions;
+﻿using CramMathUltra.Application.Models;
+using CramMathUltra.Application.Sessions;
+using CramMathUltra.Domain.Enums;
 using CramMathUltra.Presentation.Audio;
 using CramMathUltra.Presentation.Core;
 using CramMathUltra.Presentation.Factories;
@@ -28,29 +30,16 @@ public class SessionUI
             if (state.IsFinished)
                 break;
 
-            MoveCursorToAnswerPosition();
+            MoveToInput();
 
-            var input =
-                ReadInput(state.ExpectedAnswerLength);
+            var input = ReadInput(state.ExpectedAnswerLength);
 
             state = _controller.Step(input);
         }
     }
 
-    private void Render(CramMathUltra.Application.Models.GameState state)
+    private void Render(GameState state)
     {
-        // SessionUI.cs
-
-        if (state.IsCorrect)
-        {
-            SoundEffects.Correct();
-        }
-        
-        if (state.IsWrong)
-        {
-            SoundEffects.Wrong();
-        }
-        
         var ui =
             state.IsCorrect ? UiState.Correct :
             state.IsWrong ? UiState.Wrong :
@@ -58,12 +47,21 @@ public class SessionUI
 
         _layout.Render(
             AsciiFactory.Left(ui),
-            Center(state),
+            BuildCenter(state),
             AsciiFactory.Right(ui)
         );
     }
 
-    private string Center(CramMathUltra.Application.Models.GameState state)
+    private string BuildCenter(GameState state)
+    {
+        return state.Mode switch
+        {
+            TrainingModeType.TableFill => BuildTable(state),
+            _ => BuildStandard(state)
+        };
+    }
+
+    private string BuildStandard(GameState state)
     {
         return $@"
 CRAM MATH ULTRA
@@ -77,17 +75,52 @@ Answer:
 ";
     }
 
-    private void MoveCursorToAnswerPosition()
+    private string BuildTable(GameState state)
     {
-        int centerColumnStart = 50;
+        int size = state.TableSize;
 
-        int answerLine = 9;
+        var lines = new List<string>();
 
-        int inputOffset = 9;
+        for (int r = 0; r < size; r++)
+        {
+            var row = "";
 
-        Console.SetCursorPosition(
-            centerColumnStart + inputOffset,
-            answerLine);
+            for (int c = 0; c < size; c++)
+            {
+                var value = (r + 1) * (c + 1);
+
+                string cell;
+
+                if (state.TableSolved[r, c])
+                    cell = value.ToString().PadLeft(3);
+                else if (r == state.Row && c == state.Col)
+                    cell = " ? ".PadLeft(3);
+                else
+                    cell = " . ".PadLeft(3);
+
+                row += cell + " ";
+            }
+
+            lines.Add(row);
+        }
+
+        return $@"
+TABLE FILL ({size}x{size})
+
+{state.CurrentQuestion}
+
+{string.Join("\n", lines)}
+
+Correct: {state.Correct}
+Wrong:   {state.Wrong}
+
+Answer:
+";
+    }
+
+    private void MoveToInput()
+    {
+        Console.SetCursorPosition(60, 24);
     }
 
     private string ReadInput(int expectedLength)
@@ -106,10 +139,8 @@ Answer:
                 if (input.Length > 0)
                 {
                     input = input[..^1];
-
                     Console.Write("\b \b");
                 }
-
                 continue;
             }
 
@@ -117,11 +148,11 @@ Answer:
                 continue;
 
             input += key.KeyChar;
-
             Console.Write(key.KeyChar);
 
             if (input.Length >= expectedLength)
             {
+                Console.WriteLine();
                 return input;
             }
         }

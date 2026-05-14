@@ -2,6 +2,7 @@
 using CramMathUltra.Application.Sessions;
 using CramMathUltra.Presentation.Audio;
 using CramMathUltra.Presentation.Core;
+using CramMathUltra.Presentation.Factories;
 using CramMathUltra.Presentation.Screens;
 using CramMathUltra.Presentation.Soundtracks;
 
@@ -30,10 +31,10 @@ internal class Program
 
             try
             {
-                var engine = engineFactory.Create();
+                var config = SessionConfigurationFactory.Create();
 
+                var engine = engineFactory.Create(config);
                 var controller = new SessionController(engine);
-
                 var ui = new SessionUI(controller);
 
                 ui.Run();

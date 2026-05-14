@@ -7,8 +7,13 @@ namespace CramMathUltra.Application.Factories;
 
 public class EngineFactory
 {
-    public IGameEngine Create()
+    public IGameEngine Create(SessionConfiguration config)
     {
-        return new SessionEngine();
+        return config.Mode switch
+        {
+            TrainingModeType.Standard => new SessionEngine(),
+            TrainingModeType.TableFill => new TableFillEngine(),
+            _ => new SessionEngine()
+        };
     }
 }

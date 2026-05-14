@@ -31,13 +31,10 @@ The project focuses on:
 
 ### Gameplay
 
-![Gameplay Screenshot](screenshots/gameplay.png)
+![Gameplay Screenshot](screenshots/gameplay1.png)
 
----
 
-### Results Screen
-
-![Results Screen Screenshot](screenshots/results-screen.png)
+![Gameplay Screenshot](screenshots/gameplay2.png)
 
 ---
 
